@@ -1,26 +1,29 @@
 <template>
     <div class="shopify-section-header">
         <div class="grid_icons">
-            <!-- <el-input prefix-icon="el-icon-search"></el-input> -->
-            <i class="el-icon-search"></i>
-            <i class="el-icon-goods"></i>
+            <form action="submitSearch">
+                <el-input prefix-icon="el-icon-search" class="search-input" v-bind:class="{showed: searchInputShow}" v-model="searchtext" v-on:click.native="showInput" placeholder="搜一搜..." v-focus="searchInputShow" v-on:blur="searchInputShow=false" type="search"></el-input>
+            </form>
+            <a href="/cart"><i class="el-icon-goods"></i></a>
         </div>
         <div class="grid_lists">
-            <ul>
-                <li>生活用品</li>
-                <li>汽车用品</li>
-                <li>望远镜</li>
-                <li>男士凉鞋</li>
-                <li>男士钱包</li>
-                <li>电子产品</li>
-                <li>生活用品</li>
-                <li>汽车用品</li>
-                <li>望远镜</li>
-                <li>男士凉鞋</li>
-                <li>男士钱包</li>
-                <li>电子产品</li>
-                <li>电子产品</li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="/lifegoods">生活用品</a></li>
+                    <li><a href="/lifegoods">汽车用品</a></li>
+                    <li><a href="/lifegoods">电子产品</a></li>
+                    <li><a href="/lifegoods">男士凉鞋</a></li>
+                    <li><a href="/lifegoods">男士钱包</a></li>
+                    <li><a href="/lifegoods">女士化妆品</a></li>
+                    <li><a href="/lifegoods">办公用品</a></li>
+                    <li><a href="/lifegoods">家居用品</a></li>
+                    <li><a href="/lifegoods">服饰鞋帽</a></li>
+                    <li><a href="/lifegoods">汽车用品</a></li>
+                    <li><a href="/lifegoods">娱乐科技</a></li>
+                    <li><a href="/lifegoods">母婴用品</a></li>
+                    <li><a href="/lifegoods">运动器具</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="grid_logo">
             <img src="../assets/logo.png" alt="logo" width="30">
@@ -29,7 +32,30 @@
 </template>
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data: function () {
+    return {
+      searchInputShow: false,
+      searchtext: ''
+    }
+  },
+  directives: {
+    // focus: {
+    //   componentUpdated: function (el, {value}) {
+    //     if (value) {
+    //       el.querySelector('input').focus()
+    //     }
+    //   }
+    // }
+  },
+  methods: {
+    showInput: function () {
+      this.searchInputShow = true
+    },
+    submitSearch: function () {
+      console.log(this.searchtext)
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -50,10 +76,38 @@ export default {
     .grid_icons {
         width: 25%;
         text-align: right;
-        i {
+        position: relative;
+        /deep/ i {
             font-weight: bold;
             font-size: 20px;
             padding: 0 10px;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 45px;
+            padding-right: 50px;
+            transition: all 0.35s cubic-bezier(0.29, 0.63, 0.44, 1);
+            -moz-transition: all 0.35s cubic-bezier(0.29, 0.63, 0.44, 1);
+            -webkit-transition: all 0.35s cubic-bezier(0.29, 0.63, 0.44, 1);
+            -o-transition: all 0.35s cubic-bezier(0.29, 0.63, 0.44, 1);
+            /deep/ .el-input__inner {
+                border: none;
+            }
+            &.showed {
+                max-width: 250px;
+                /deep/ .el-input__inner {
+                    border: 1px solid #dcdfe6;
+                    padding-left: 45px;
+                }
+            }
+        }
+        .el-icon-goods {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 0;
         }
     }
     .grid_lists {

@@ -7,6 +7,18 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+Vue.directive('focus', {
+  componentUpdated: function (el, {value}) {
+    if (value) {
+      if (el.tagName === 'INPUT') {
+        el.focus()
+      } else {
+        el.querySelector('input').focus()
+      }
+    }
+  }
+})
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
