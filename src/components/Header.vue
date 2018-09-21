@@ -26,7 +26,7 @@
             </nav>
         </div>
         <div class="grid_logo">
-            <img src="../assets/logo.png" alt="logo" width="30">
+            <img src="../assets/images/logo.png" alt="logo" width="30">
         </div>
     </div>
 </template>
