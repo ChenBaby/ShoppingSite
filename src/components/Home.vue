@@ -3,27 +3,11 @@
         <Header></Header>
         <div class="page-container">
             <swiper :options="swiperOption" class="swiper-section">
-                <swiper-slide class="swiper-one">
+                <swiper-slide v-for="(data, index) in swiperDatas" :key="index" :style="{backgroundImage:'url(' + data.imgurl + ')'}">
                     <div class="swiper-overlay">
                         <div class="swiper-text">
-                            <p class="swiper-title">Chen's Shopingsite</p>
-                            <p class="swiper-subtitle">您的最佳选择</p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="swiper-two">
-                    <div class="swiper-overlay">
-                        <div class="swiper-text">
-                            <p class="swiper-title">正品外购</p>
-                            <p class="swiper-subtitle">全球商品值得信赖</p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="swiper-three">
-                    <div class="swiper-overlay">
-                        <div class="swiper-text">
-                            <p class="swiper-title">2018年世界杯俄罗斯的大折扣</p>
-                            <p class="swiper-subtitle">目前折扣超过50％</p>
+                            <p class="swiper-title">{{data.title}}</p>
+                            <p class="swiper-subtitle">{{data.subtitle}}</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -35,111 +19,15 @@
                 </div>
                 <div class="collection-grid">
                     <el-row>
-                        <el-col :span="8">
+                        <el-col :span="8" v-for="(item, index) in collectionDatas" :key="index">
                             <div class="grid-content">
                                 <div class="image-block">
                                     <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
+                                        <img :src="item.imgurl" :alt="'goods' + (index + 1)">
                                     </a>
                                 </div>
                                 <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
-                                </div>
-                            </div>
-                        </el-col>
-                        <el-col :span="8">
-                            <div class="grid-content">
-                                <div class="image-block">
-                                    <a href="javascript:void(0)">
-                                        <img src="../assets/goods1.jpg" alt="goods1">
-                                    </a>
-                                </div>
-                                <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">男士手表</h3></a>
+                                    <a href="javascript:void(0)"><h3 class="wrapper-title">{{item.title}}</h3></a>
                                 </div>
                             </div>
                         </el-col>
@@ -185,7 +73,50 @@ export default {
           el: '.swiper-pagination',
           clickable: true // 可点击下面的圆点切换
         }
-      }
+      },
+      swiperDatas: [
+        {
+          imgurl: require('../assets/images/swiper1.jpg'),
+          title: 'Chen\'s Shopingsite',
+          subtitle: '您的最佳选择'
+        },
+        {
+          imgurl: require('../assets/images/swiper2.jpg'),
+          title: '正品外购',
+          subtitle: '全球商品值得信赖'
+        },
+        {
+          imgurl: require('../assets/images/swiper3.jpg'),
+          title: '2018年世界杯俄罗斯的大折扣',
+          subtitle: '目前折扣超过50％'
+        }
+      ],
+      collectionDatas: [
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        },
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        },
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        },
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        },
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        },
+        {
+          imgurl: require('../assets/images/goods1.jpg'),
+          title: '男士手表'
+        }
+      ]
     }
   }
 }
@@ -214,6 +145,8 @@ export default {
         /deep/ .swiper-pagination-bullet {
             background: #fff;
             opacity: 1;
+            width: 12px;
+            height: 12px;
         }
         /deep/ .swiper-pagination-bullet-active {
             opacity: 1;
@@ -256,7 +189,6 @@ export default {
                 transition: all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
                 transition-delay: 0.3s;
                 z-index: 3;
-
             }
             .swiper-overlay {
                 position: relative;
@@ -274,15 +206,6 @@ export default {
                     z-index: 3;
                 }
             }
-        }
-        .swiper-one {
-            background-image: url('../assets/swiper1.jpg')
-        }
-        .swiper-two {
-            background-image: url('../assets/swiper2.jpg')
-        }
-        .swiper-three {
-            background-image: url('../assets/swiper3.jpg')
         }
         .swiper-title {
             font-size: 24px;
