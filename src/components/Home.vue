@@ -22,12 +22,12 @@
                         <el-col :span="8" v-for="(item, index) in collectionDatas" :key="index">
                             <div class="grid-content">
                                 <div class="image-block">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" @click="clickone();clicktwo()">
                                         <img :src="item.imgurl" :alt="'goods' + (index + 1)">
                                     </a>
                                 </div>
                                 <div class="image-wrapper">
-                                    <a href="javascript:void(0)"><h3 class="wrapper-title">{{item.title}}</h3></a>
+                                    <a href="javascript:void(0)" @click="clickone();clicktwo()"><h3 class="wrapper-title">{{item.title}}</h3></a>
                                 </div>
                             </div>
                         </el-col>
@@ -59,6 +59,14 @@ export default {
     Footer,
     swiper,
     swiperSlide
+  },
+  methods: {
+    clickone: function () {
+      console.log('one')
+    },
+    clicktwo: function () {
+      console.log('teo')
+    }
   },
   data () {
     return {

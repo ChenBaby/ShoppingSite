@@ -1,39 +1,106 @@
 <template>
-    <div class="login-page text-center">
-        <el-card class="box-card">
-            <el-form status-icon ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="用户名">
-                    <el-input type="text" v-model="name" autoComplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="密码">
-                    <el-input type="password" v-model="passwd" autoComplete="off"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="login">登录</el-button>
-                </el-form-item>
-            </el-form>
-        </el-card>
-        <Footer></Footer>
-    </div>
-
+    <el-container>
+        <el-header>
+            <Header></Header>
+        </el-header>
+        <el-main>
+            <div class="login-page">
+                <h1>登录</h1>
+                <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
+                    <el-form-item label="用户名" prop="name" class="text-left">
+                        <el-input type="text" v-model="loginForm.name" autoComplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="passwd" class="text-left">
+                        <el-input type="password" v-model="loginForm.passwd" autoComplete="off" @keyup.enter.native="login"></el-input>
+                    </el-form-item>
+                    <p>
+                        <a @click="reset" class="reset-btn">忘记密码？</a>
+                    </p>
+                    <p>
+                        <el-button class="login-btn" type="primary" @click="login">登录</el-button>
+                    </p>
+                    <a href="/regist">注册</a>
+                </el-form>
+            </div>
+        </el-main>
+        <el-footer>
+            <Footer></Footer>
+        </el-footer>
+    </el-container>
 </template>
 <script>
+import Header from './Header.vue'
 import Footer from './Footer.vue'
+import axios from 'axios'
 
 export default {
   name: 'Login',
   components: {
+    Header,
     Footer
   },
   data: function () {
+    var validatePass = (rule, value, callback) => {
+      if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
+        callback(new Error('请输入至少6位的数字和字母组合的密码'))
+      } else {
+        callback()
+      }
+    }
     return {
-      name: '',
-      passwd: ''
+      loginForm: {
+        name: '',
+        passwd: ''
+      },
+      rules: {
+        name: [{
+          required: true, message: '用户名不能为空'
+        }, {
+          min: 6, message: '用户名不能少于6位'
+        }],
+        passwd: [{
+          required: true, message: '密码不能为空'
+        }, {
+          validator: validatePass, trigger: 'blur'
+        }]
+      }
     }
   },
   methods: {
     login: function () {
-      console.log('loginclicked')
+      this.$refs['loginForm'].validate((valid) => {
+        if (valid) {
+          axios.post('http://35.200.61.173:7001/user/sign_in', {
+            username: this.loginForm.name,
+            password: this.loginForm.passwd
+          })
+            .then((res) => {
+              console.log('res', res.data.message)
+              let resdata = res.data
+              if (resdata.success) {
+                this.$notify({
+                  message: `欢迎您，${this.loginForm.name}!${resdata.data.message}`,
+                  type: 'success'
+                })
+              } else if (!res.data.success) {
+                this.$message.error(res.data.message)
+              }
+            })
+            .catch(err => {
+              console.log(err)
+              this.$message({
+                type: 'error',
+                message: '网络错误，请重试'
+              })
+            })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    reset: function () {
+      console.log('点击找回密码')
     }
   }
 }
@@ -46,16 +113,12 @@ export default {
     max-width: 1200px;
     margin: 0 auto;
   }
-  .text {
-    font-size: 14px;
+  .login-form {
+      width: 50%;
+      margin: 0 auto;
   }
-
-  .item {
-    padding: 18px 0;
-  }
-
-  .box-card {
-    width: 480px;
-    margin: 0 auto;
+  .login-btn, .reset-btn {
+      margin-bottom: 22px;
+      display: inline-block;
   }
 </style>
