@@ -19,7 +19,9 @@
                     <p>
                         <el-button class="login-btn" type="primary" @click="login">登录</el-button>
                     </p>
-                    <a href="/regist">注册</a>
+                    <router-link :to="{path: '/regist'}">
+                        注册
+                    </router-link>
                 </el-form>
             </div>
         </el-main>
@@ -31,8 +33,6 @@
 <script>
 import Header from './Header.vue'
 import Footer from './Footer.vue'
-import axios from 'axios'
-
 export default {
   name: 'Login',
   components: {
@@ -70,20 +70,25 @@ export default {
     login: function () {
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
-          axios.post('http://35.200.61.173:7001/user/sign_in', {
+          this.$store.dispatch('user/signIn', {
             username: this.loginForm.name,
             password: this.loginForm.passwd
           })
             .then((res) => {
               console.log('res', res.data.message)
-              let resdata = res.data
-              if (resdata.success) {
-                this.$notify({
-                  message: `欢迎您，${this.loginForm.name}!${resdata.data.message}`,
-                  type: 'success'
+              if (res.success) {
+                // this.$notify({
+                //   message: `欢迎您，${this.loginForm.name}!${res.data.message}`,
+                //   type: 'success'
+                // })
+                this.$store.commit('user/setIsLogged', true)
+                localStorage.setItem('CK', res.data.ck)
+                this.$store.dispatch('user/getUserInfo').then(res => {
+                  this.$store.commit('user/setUserInfo', res.data)
                 })
-              } else if (!res.data.success) {
-                this.$message.error(res.data.message)
+                this.$router.push('/')
+              } else {
+                this.$message.error(res.message)
               }
             })
             .catch(err => {

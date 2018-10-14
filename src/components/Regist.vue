@@ -7,7 +7,8 @@
             <div class="regist-page">
                 <h1>注册</h1>
                 <el-form ref="registForm" label-width="100px" label-position="top" :model="registForm" class="regist-form">
-                    <el-form-item label="用户名" prop="name" class="text-left" :rules="[{required: true,message: '用户名不能为空'},{validator: validateName,trigger: 'blur'}]">
+                    <el-form-item label="用户名" prop="name" class="text-left"
+                        :rules="[{required: true,message: '用户名不能为空'},{validator: validateName,trigger: 'blur'}]">
                         <el-input type="text" v-model="registForm.name" autoComplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="邮箱" prop="mail" class="text-left" :rules="[{required: true,message: '邮箱不能为空'},{ type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }]">
@@ -23,7 +24,10 @@
                         <el-button class="login-btn" type="primary" @click="regist">提交</el-button>
                     </p>
                     <p>
-                        <a href="/login">已有账户？直接登录</a>
+                        name: {{$store.state.user.data.name}}
+                        <router-link :to="{path: '/login'}">
+                            已有账户？直接登录
+                        </router-link>
                     </p>
                 </el-form>
             </div>
@@ -35,11 +39,13 @@
 </template>
 <script>
 import Header from './Header.vue'
-import axios from 'axios'
+import Footer from './Footer.vue'
+import {mapActions} from 'vuex'
 export default {
   name: 'Regist',
   components: {
-    Header
+    Header,
+    Footer
   },
   data () {
     return {
@@ -48,53 +54,51 @@ export default {
         mail: '',
         passwd: '',
         nickname: ''
-      },
-      validateName: (rule, value, callback) => {
-        if (value) {
-          if (value.length < 6) {
-            callback(new Error('用户名不能少于6位'))
-          } else {
-            axios.get('http://35.200.61.173:7001/user/check_username', {
-              params: {
-                username: value
-              }
-            })
-              .then(res => {
-                let resdata = res.data
-                if (resdata.data) {
-                  if (resdata.data.isUsed) {
-                    callback(new Error('用户名已存在'))
-                  } else {
-                    callback()
-                  }
-                  console.log(res)
-                }
-              })
-              .catch(err => {
-                console.log(err)
-                this.$message({
-                  type: 'error',
-                  message: '网络错误，请重试'
-                })
-              })
-          }
-        }
-      },
-      validatePass: (rule, value, callback) => {
-        if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
-          callback(new Error('请输入至少6位的数字和字母组合的密码'))
-        } else {
-          callback()
-        }
       }
     }
   },
   methods: {
-    regist: function () {
+    ...mapActions('user', ['checkUserName']),
+    validateName (rule, value, callback) {
+      if (value) {
+        if (value.length < 6) {
+          callback(new Error('用户名不能少于6位'))
+        } else {
+          this.checkUserName({
+            username: value
+          })
+            .then(res => {
+              if (res.data) {
+                if (res.data.isUsed) {
+                  callback(new Error('用户名已存在'))
+                } else {
+                  callback()
+                }
+                console.log(res)
+              }
+            })
+            .catch(err => {
+              console.log(err)
+              this.$message({
+                type: 'error',
+                message: '网络错误，请重试'
+              })
+            })
+        }
+      }
+    },
+    validatePass (rule, value, callback) {
+      if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
+        callback(new Error('请输入至少6位的数字和字母组合的密码'))
+      } else {
+        callback()
+      }
+    },
+    regist () {
       console.log('提交注册')
       this.$refs['registForm'].validate((valid) => {
         if (valid) {
-          axios.post('http://35.200.61.173:7001/user/signup', {
+          this.$store.dispatch('user/signUp', {
             username: this.registForm.name,
             email: this.registForm.mail,
             password: this.registForm.passwd,
@@ -102,12 +106,12 @@ export default {
           })
             .then((res) => {
               console.log('res', res.data.message)
-              let resdata = res.data
-              if (resdata.success) {
+              if (res.success) {
                 this.$notify({
-                  message: `恭喜您，${this.registForm.name}!${resdata.data.message}`,
+                  message: `恭喜您，${this.registForm.name}!${res.data.message}`,
                   type: 'success'
                 })
+                this.$router.push({path: '/'})
               } else if (!res.data.success) {
                 this.$message.error(res.data.message)
               }

@@ -6,6 +6,7 @@ import router from './router'
 import './assets/less/customized.less' // 引入公共样式
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import store from './store'
 
 Vue.directive('focus', {
   componentUpdated: function (el, {value}) {
@@ -27,6 +28,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

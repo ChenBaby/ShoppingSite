@@ -2,36 +2,39 @@
     <div class="shopify-section-header">
         <div class="grid_icons">
             <form action="submitSearch">
-                <el-input prefix-icon="el-icon-search" class="search-input" v-bind:class="{showed: searchInputShow}" v-model="searchtext" v-on:click.native="showInput" placeholder="搜一搜..." v-focus="searchInputShow" v-on:blur="searchInputShow=false" type="search"></el-input>
+                <el-input prefix-icon="el-icon-search" class="search-input" v-bind:class="{showed: searchInputShow, moved: isLogged}" v-model="searchtext" v-on:click.native="showInput" placeholder="搜一搜..." v-focus="searchInputShow" v-on:blur="searchInputShow=false" type="search"></el-input>
             </form>
-            <a href="/login" class="header_account">
+            <router-link :to="{path: '/login'}" class="header_account" :class="{'hidden': isLogged}">
                 <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-login" viewBox="0 0 28.33 37.68">
                     <path d="M14.17 14.9a7.45 7.45 0 1 0-7.5-7.45 7.46 7.46 0 0 0 7.5 7.45zm0-10.91a3.45 3.45 0 1 1-3.5 3.46A3.46 3.46 0 0 1 14.17 4zM14.17 16.47A14.18 14.18 0 0 0 0 30.68c0 1.41.66 4 5.11 5.66a27.17 27.17 0 0 0 9.06 1.34c6.54 0 14.17-1.84 14.17-7a14.18 14.18 0 0 0-14.17-14.21zm0 17.21c-6.3 0-10.17-1.77-10.17-3a10.17 10.17 0 1 1 20.33 0c.01 1.23-3.86 3-10.16 3z"></path>
                 </svg>
-            </a>
-            <a href="/cart" class="header_goods"><i class="el-icon-goods"></i></a>
+            </router-link>
+            <router-link :to="{path: '/cart'}" class="header_goods">
+                <i class="el-icon-goods"></i>
+            </router-link>
         </div>
         <div class="grid_lists">
             <nav>
                 <ul>
-                    <li><a href="/lifegoods">生活用品</a></li>
-                    <li><a href="/lifegoods">汽车用品</a></li>
-                    <li><a href="/lifegoods">电子产品</a></li>
-                    <li><a href="/lifegoods">男士凉鞋</a></li>
-                    <li><a href="/lifegoods">男士钱包</a></li>
-                    <li><a href="/lifegoods">女士化妆品</a></li>
-                    <li><a href="/lifegoods">办公用品</a></li>
-                    <li><a href="/lifegoods">家居用品</a></li>
-                    <li><a href="/lifegoods">服饰鞋帽</a></li>
-                    <li><a href="/lifegoods">汽车用品</a></li>
-                    <li><a href="/lifegoods">娱乐科技</a></li>
-                    <li><a href="/lifegoods">母婴用品</a></li>
-                    <li><a href="/lifegoods">运动器具</a></li>
+                    <li><router-link :to="{path: '/lifegoods'}">生活用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">汽车用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">电子产品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">男士凉鞋</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">男士钱包</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">女士化妆品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">办公用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">家居用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">服饰鞋帽</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">汽车用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">娱乐科技</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">母婴用品</router-link></li>
+                    <li><router-link :to="{path: '/lifegoods'}">运动器具</router-link></li>
                 </ul>
             </nav>
         </div>
         <div class="grid_logo">
-            <img src="../assets/images/logo.png" alt="logo" width="30">
+            <h6 v-if="isLogged" class="name-block">您好：{{user.name}}</h6>
+            <img src="../assets/images/logo.png" alt="logo" width="30" class="logo">
         </div>
     </div>
 </template>
@@ -59,6 +62,17 @@ export default {
     },
     submitSearch: function () {
       console.log(this.searchtext)
+    }
+  },
+  //   watch: {
+  //     isLogged () {}
+  //   },
+  computed: {
+    user () {
+      return this.$store.state.user.userInfo
+    },
+    isLogged () {
+      return this.$store.state.user.isLogged
     }
   }
 }
@@ -107,6 +121,9 @@ export default {
                     padding-left: 45px;
                 }
             }
+            &.moved {
+                transform: translateX(40px);
+            }
         }
         .header_goods {
             position: absolute;
@@ -122,6 +139,9 @@ export default {
             -ms-transform: translateY(-50%);
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
+            &.hidden {
+                display: none;
+            }
         }
     }
     .grid_lists {
@@ -133,6 +153,13 @@ export default {
     .grid_logo {
         width: 25%;
         text-align: right;
+        .logo {
+            vertical-align: middle;
+        }
+    }
+    .name-block {
+        display: inline-block;
+        line-height: 30px;
     }
 }
 </style>
