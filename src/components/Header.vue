@@ -40,14 +40,14 @@
 </template>
 <script>
 export default {
-  name: 'Header',
-  data: function () {
-    return {
-      searchInputShow: false,
-      searchtext: ''
-    }
-  },
-  directives: {
+    "name": 'Header',
+    "data": function () {
+        return {
+            "searchInputShow": false,
+            "searchtext": ''
+        }
+    },
+    "directives": {
     // focus: {
     //   componentUpdated: function (el, {value}) {
     //     if (value) {
@@ -55,26 +55,26 @@ export default {
     //     }
     //   }
     // }
-  },
-  methods: {
-    showInput: function () {
-      this.searchInputShow = true
     },
-    submitSearch: function () {
-      console.log(this.searchtext)
-    }
-  },
-  //   watch: {
-  //     isLogged () {}
-  //   },
-  computed: {
-    user () {
-      return this.$store.state.user.userInfo
+    "methods": {
+        "showInput": function () {
+            this.searchInputShow = true
+        },
+        "submitSearch": function () {
+            console.log(this.searchtext)
+        }
     },
-    isLogged () {
-      return this.$store.state.user.isLogged
+    //   watch: {
+    //     isLogged () {}
+    //   },
+    "computed": {
+        user () {
+            return this.$store.state.user.userInfo
+        },
+        isLogged () {
+            return this.$store.state.user.isLogged
+        }
     }
-  }
 }
 </script>
 <style lang="less" scoped>

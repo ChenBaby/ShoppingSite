@@ -7,22 +7,22 @@ import Regist from '@/components/regist'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/regist',
-      name: 'regist',
-      component: Regist
-    }
-  ]
+    "mode": 'history',
+    "routes": [
+        {
+            "path": '/',
+            "name": 'Home',
+            "component": Home
+        },
+        {
+            "path": '/login',
+            "name": 'Login',
+            "component": Login
+        },
+        {
+            "path": '/regist',
+            "name": 'regist',
+            "component": Regist
+        }
+    ]
 })

@@ -53,80 +53,80 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
 export default {
-  name: 'Home',
-  components: {
-    Header,
-    Footer,
-    swiper,
-    swiperSlide
-  },
-  methods: {
-    clickone: function () {
-      console.log('one')
+    "name": 'Home',
+    "components": {
+        Header,
+        Footer,
+        swiper,
+        swiperSlide
     },
-    clicktwo: function () {
-      console.log('teo')
+    "methods": {
+        "clickone": function () {
+            console.log('one')
+        },
+        "clicktwo": function () {
+            console.log('teo')
+        }
+    },
+    data () {
+        return {
+            "swiperOption": {
+                "autoplay": {
+                    "delay": 5000,
+                    "disableOnInteraction": false
+                },
+                "speed": 800,
+                "parallax": true,
+                "pagination": {
+                    "el": '.swiper-pagination',
+                    "clickable": true // 可点击下面的圆点切换
+                }
+            },
+            "swiperDatas": [
+                {
+                    "imgurl": require('../assets/images/swiper1.jpg'),
+                    "title": 'Chen\'s Shopingsite',
+                    "subtitle": '您的最佳选择'
+                },
+                {
+                    "imgurl": require('../assets/images/swiper2.jpg'),
+                    "title": '正品外购',
+                    "subtitle": '全球商品值得信赖'
+                },
+                {
+                    "imgurl": require('../assets/images/swiper3.jpg'),
+                    "title": '2018年世界杯俄罗斯的大折扣',
+                    "subtitle": '目前折扣超过50％'
+                }
+            ],
+            "collectionDatas": [
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                },
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                },
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                },
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                },
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                },
+                {
+                    "imgurl": require('../assets/images/goods1.jpg'),
+                    "title": '男士手表'
+                }
+            ]
+        }
     }
-  },
-  data () {
-    return {
-      swiperOption: {
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false
-        },
-        speed: 800,
-        parallax: true,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true // 可点击下面的圆点切换
-        }
-      },
-      swiperDatas: [
-        {
-          imgurl: require('../assets/images/swiper1.jpg'),
-          title: 'Chen\'s Shopingsite',
-          subtitle: '您的最佳选择'
-        },
-        {
-          imgurl: require('../assets/images/swiper2.jpg'),
-          title: '正品外购',
-          subtitle: '全球商品值得信赖'
-        },
-        {
-          imgurl: require('../assets/images/swiper3.jpg'),
-          title: '2018年世界杯俄罗斯的大折扣',
-          subtitle: '目前折扣超过50％'
-        }
-      ],
-      collectionDatas: [
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        },
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        },
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        },
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        },
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        },
-        {
-          imgurl: require('../assets/images/goods1.jpg'),
-          title: '男士手表'
-        }
-      ]
-    }
-  }
 }
 </script>
 

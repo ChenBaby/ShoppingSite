@@ -42,94 +42,94 @@ import Header from './Header.vue'
 import Footer from './Footer.vue'
 import {mapActions} from 'vuex'
 export default {
-  name: 'Regist',
-  components: {
-    Header,
-    Footer
-  },
-  data () {
-    return {
-      registForm: {
-        name: '',
-        mail: '',
-        passwd: '',
-        nickname: ''
-      }
-    }
-  },
-  methods: {
-    ...mapActions('user', ['checkUserName']),
-    validateName (rule, value, callback) {
-      if (value) {
-        if (value.length < 6) {
-          callback(new Error('用户名不能少于6位'))
-        } else {
-          this.checkUserName({
-            username: value
-          })
-            .then(res => {
-              if (res.data) {
-                if (res.data.isUsed) {
-                  callback(new Error('用户名已存在'))
+    "name": 'Regist',
+    "components": {
+        Header,
+        Footer
+    },
+    data () {
+        return {
+            "registForm": {
+                "name": '',
+                "mail": '',
+                "passwd": '',
+                "nickname": ''
+            }
+        }
+    },
+    "methods": {
+        ...mapActions('user', ['checkUserName']),
+        validateName (rule, value, callback) {
+            if (value) {
+                if (value.length < 6) {
+                    callback(new Error('用户名不能少于6位'))
                 } else {
-                  callback()
+                    this.checkUserName({
+                        "username": value
+                    })
+                        .then(res => {
+                            if (res.data) {
+                                if (res.data.isUsed) {
+                                    callback(new Error('用户名已存在'))
+                                } else {
+                                    callback()
+                                }
+                                console.log(res)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            this.$message({
+                                "type": 'error',
+                                "message": '网络错误，请重试'
+                            })
+                        })
                 }
-                console.log(res)
-              }
-            })
-            .catch(err => {
-              console.log(err)
-              this.$message({
-                type: 'error',
-                message: '网络错误，请重试'
-              })
+            }
+        },
+        validatePass (rule, value, callback) {
+            if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
+                callback(new Error('请输入至少6位的数字和字母组合的密码'))
+            } else {
+                callback()
+            }
+        },
+        regist () {
+            console.log('提交注册')
+            this.$refs['registForm'].validate((valid) => {
+                if (valid) {
+                    this.$store.dispatch('user/signUp', {
+                        "username": this.registForm.name,
+                        "email": this.registForm.mail,
+                        "password": this.registForm.passwd,
+                        "name": this.registForm.nickname
+                    })
+                        .then((res) => {
+                            console.log('res', res.data.message)
+                            if (res.success) {
+                                this.$notify({
+                                    "message": `恭喜您，${this.registForm.name}!${res.data.message}`,
+                                    "type": 'success'
+                                })
+                                this.$router.push({"path": '/'})
+                            } else if (!res.data.success) {
+                                this.$message.error(res.data.message)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            this.$message({
+                                "type": 'error',
+                                "message": '网络错误，请重试'
+                            })
+                        })
+                } else {
+                    console.log('error submit!!')
+                    return false
+                }
             })
         }
-      }
-    },
-    validatePass (rule, value, callback) {
-      if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
-        callback(new Error('请输入至少6位的数字和字母组合的密码'))
-      } else {
-        callback()
-      }
-    },
-    regist () {
-      console.log('提交注册')
-      this.$refs['registForm'].validate((valid) => {
-        if (valid) {
-          this.$store.dispatch('user/signUp', {
-            username: this.registForm.name,
-            email: this.registForm.mail,
-            password: this.registForm.passwd,
-            name: this.registForm.nickname
-          })
-            .then((res) => {
-              console.log('res', res.data.message)
-              if (res.success) {
-                this.$notify({
-                  message: `恭喜您，${this.registForm.name}!${res.data.message}`,
-                  type: 'success'
-                })
-                this.$router.push({path: '/'})
-              } else if (!res.data.success) {
-                this.$message.error(res.data.message)
-              }
-            })
-            .catch(err => {
-              console.log(err)
-              this.$message({
-                type: 'error',
-                message: '网络错误，请重试'
-              })
-            })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
     }
-  }
 }
 </script>
 <style lang="less" scoped>
