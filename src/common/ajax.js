@@ -1,12 +1,12 @@
 import axios from 'axios'
 const options = {
-    // baseURL: 'http://35.200.61.173:7001'
-    "baseURL": 'http://172.20.10.7:7001'
-//   baseURL: 'http://35.200.61.173:7001'
-//   baseURL: 'http://35.200.61.173:7001'
-//   baseURL: 'http://35.200.61.173:7001'
-//   baseURL: 'http://35.200.61.173:7001'
-
+    "baseURL": 'http://35.200.61.173:7001',
+    //   "baseURL": 'http://172.20.10.7:7001'
+    //   "baseURL": 'http://35.200.61.173:7001'
+    //   "baseURL": 'http://35.200.61.173:7001'
+    //   "baseURL": 'http://35.200.61.173:7001'
+    //   "baseURL": 'http://35.200.61.173:7001'
+    "withCredentials": true
 }
 const _axios = axios.create(options)
 
