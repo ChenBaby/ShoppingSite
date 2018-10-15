@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import global from './global'
-import user from './pages/user'
+import user from './modules/user'
 Vue.use(Vuex)
 export default new Vuex.Store({
     ...global,

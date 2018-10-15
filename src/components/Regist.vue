@@ -24,7 +24,6 @@
                         <el-button class="login-btn" type="primary" @click="regist">提交</el-button>
                     </p>
                     <p>
-                        name: {{$store.state.user.data.name}}
                         <router-link :to="{path: '/login'}">
                             已有账户？直接登录
                         </router-link>
@@ -58,7 +57,7 @@ export default {
         }
     },
     "methods": {
-        ...mapActions('user', ['checkUserName']),
+        ...mapActions('user', ['checkUserName', 'signUp']),
         validateName (rule, value, callback) {
             if (value) {
                 if (value.length < 6) {
@@ -98,7 +97,7 @@ export default {
             console.log('提交注册')
             this.$refs['registForm'].validate((valid) => {
                 if (valid) {
-                    this.$store.dispatch('user/signUp', {
+                    this.signUp({
                         "username": this.registForm.name,
                         "email": this.registForm.mail,
                         "password": this.registForm.passwd,
@@ -111,7 +110,7 @@ export default {
                                     "message": `恭喜您，${this.registForm.name}!${res.data.message}`,
                                     "type": 'success'
                                 })
-                                this.$router.push({"path": '/'})
+                                this.$router.push({"path": '/login'})
                             } else if (!res.data.success) {
                                 this.$message.error(res.data.message)
                             }

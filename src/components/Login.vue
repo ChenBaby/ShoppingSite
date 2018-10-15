@@ -39,14 +39,7 @@ export default {
         Header,
         Footer
     },
-    "data": function () {
-        var validatePass = (rule, value, callback) => {
-            if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
-                callback(new Error('请输入至少6位的数字和字母组合的密码'))
-            } else {
-                callback()
-            }
-        }
+    data () {
         return {
             "loginForm": {
                 "name": '',
@@ -61,12 +54,19 @@ export default {
                 "passwd": [{
                     "required": true, "message": '密码不能为空'
                 }, {
-                    "validator": validatePass, "trigger": 'blur'
+                    "validator": this.validatePass, "trigger": 'blur'
                 }]
             }
         }
     },
     "methods": {
+        validatePass (rule, value, callback) {
+            if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/.test(value)) {
+                callback(new Error('请输入至少6位的数字和字母组合的密码'))
+            } else {
+                callback()
+            }
+        },
         "login": function () {
             this.$refs['loginForm'].validate((valid) => {
                 if (valid) {
