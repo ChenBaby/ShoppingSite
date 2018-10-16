@@ -5,10 +5,17 @@ const state = {
 }
 const mutations = {
     setUserInfo (state, data) {
-        state.userInfo = {...data}
-    },
-    setIsLogged (state, isLogged) {
-        state.isLogged = isLogged
+        if (JSON.stringify(data) === '{}') {
+            state.userInfo = {}
+            state.isLogged = false
+            localStorage.setItem('isLogged', false)
+            localStorage.setItem('user', '{}')
+        } else {
+            state.userInfo = {...data}
+            state.isLogged = true
+            localStorage.setItem('isLogged', true)
+            localStorage.setItem('user', JSON.stringify(data))
+        }
     }
 }
 const actions = {
@@ -20,6 +27,9 @@ const actions = {
     },
     signIn (store, data) {
         return ajax.post('/user/sign_in', data)
+    },
+    signOut (store) {
+        return ajax.get('/user/sign_out')
     },
     getUserInfo (store) {
         return ajax.get('/user/get_user_info')

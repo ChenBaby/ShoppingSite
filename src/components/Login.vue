@@ -1,43 +1,38 @@
 <template>
-    <el-container>
-        <el-header>
-            <Header></Header>
-        </el-header>
-        <el-main>
-            <div class="login-page">
-                <h1>登录</h1>
-                <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
-                    <el-form-item label="用户名" prop="name" class="text-left">
-                        <el-input type="text" v-model="loginForm.name" autoComplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="passwd" class="text-left">
-                        <el-input type="password" v-model="loginForm.passwd" autoComplete="off" @keyup.enter.native="login"></el-input>
-                    </el-form-item>
-                    <p>
-                        <a @click="reset" class="reset-btn">忘记密码？</a>
-                    </p>
-                    <p>
-                        <el-button class="login-btn" type="primary" @click="login">登录</el-button>
-                    </p>
-                    <router-link :to="{path: '/regist'}">
-                        注册
-                    </router-link>
-                </el-form>
-            </div>
-        </el-main>
-        <el-footer>
-            <Footer></Footer>
-        </el-footer>
-    </el-container>
+<div class="overlay" :class="{open: this.opened}">
+    <div class="overlay-content">
+        <a href="javascript:void(0)" @click="closeOverlay"><i class="btn-close el-icon-close"></i></a>
+        <div class="login-panel" :class="{open: this.opened}" v-if="!isRegist">
+            <h1>登录</h1>
+            <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
+                <el-form-item label="用户名" prop="name" class="text-left">
+                    <el-input type="text" v-model="loginForm.name" autoComplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="passwd" class="text-left">
+                    <el-input type="password" v-model="loginForm.passwd" autoComplete="off" @keyup.enter.native="login"></el-input>
+                </el-form-item>
+                <p>
+                    <el-button class="login-btn" type="primary" @click="login">登录</el-button>
+                </p>
+                <a href="javascript:void(0)" @click="showRegist">注册</a>
+            </el-form>
+        </div>
+        <div v-else>
+            <Regist @showLoginPanel="showLogin"></Regist>
+        </div>
+    </div>
+
+</div>
 </template>
 <script>
-import Header from './Header.vue'
-import Footer from './Footer.vue'
+import Regist from './Regist'
 export default {
     "name": 'Login',
+    "props": {
+        "open": Boolean
+    },
     "components": {
-        Header,
-        Footer
+        Regist
     },
     data () {
         return {
@@ -56,7 +51,8 @@ export default {
                 }, {
                     "validator": this.validatePass, "trigger": 'blur'
                 }]
-            }
+            },
+            "isRegist": false
         }
     },
     "methods": {
@@ -77,15 +73,11 @@ export default {
                         .then((res) => {
                             console.log('res', res.data.message)
                             if (res.success) {
-                                // this.$notify({
-                                //   message: `欢迎您，${this.loginForm.name}!${res.data.message}`,
-                                //   type: 'success'
-                                // })
-                                this.$store.commit('user/setIsLogged', true)
                                 localStorage.setItem('CK', res.data.ck)
                                 this.$store.dispatch('user/getUserInfo').then(res => {
                                     this.$store.commit('user/setUserInfo', res.data)
                                 })
+                                this.$emit('overlayClosed')
                                 this.$router.push('/')
                             } else {
                                 this.$message.error(res.message)
@@ -104,26 +96,91 @@ export default {
                 }
             })
         },
-        "reset": function () {
-            console.log('点击找回密码')
+        "showRegist": function () {
+            this.isRegist = true
+        },
+        "showLogin": function () {
+            this.isRegist = false
+        },
+        "closeOverlay": function () {
+            this.$emit('overlayClosed')
+            this.isRegist = false
+        }
+    },
+    "computed": {
+        "opened" () {
+            return this.open
         }
     }
 }
 </script>
 <style lang="less" scoped>
-  .login-page {
-    padding-top: 100px;
-    height: 100%;
+  .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    text-align: center;
+    display: none;
+    &.open {
+        display: block;
+    }
+    .btn-close {
+        position: absolute;
+        right: 7px;
+        top: 7px;
+    }
+    .overlay-content {
+        position: fixed;
+        left: 50%;
+        top: 10px;
+        width: 440px;
+        overflow: hidden;
+        transform: translate(-50%);
+        border-radius: 6px;
+        background-color: #fff;
+    }
   }
-  .login-form {
-      width: 50%;
-      margin: 0 auto;
+  .regist-panel {
+      width: 100%;
+      max-width: 320px;
+      background-color: #fff;
+      padding: 40px 50px;
+      /deep/ .el-form-item__label {
+          padding-bottom: 0;
+      }
+      /deep/ .el-form-item {
+        margin-bottom: 10px;
+      }
   }
-  .login-btn, .reset-btn {
+  .login-panel{
+    height: 380px;
+    width: 100%;
+    max-width: 320px;
+    background-color: #fff;
+    padding: 40px 50px;
+    transform: translateY(-100%);
+    &.open {
+        animation: panelslidein .2s forwards ease-in-out;
+    }
+
+  }
+  .login-btn {
+      margin-top: 22px;
       margin-bottom: 22px;
       display: inline-block;
+  }
+  @keyframes panelslidein {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
   }
 </style>
