@@ -1,28 +1,22 @@
 <template>
-<div class="overlay" :class="{open: this.opened}">
-    <div class="overlay-content">
-        <a href="javascript:void(0)" @click="closeOverlay"><i class="btn-close el-icon-close"></i></a>
-        <div class="login-panel" :class="{open: this.opened}" v-if="!isRegist">
-            <h1>登录</h1>
-            <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
-                <el-form-item label="用户名" prop="name" class="text-left">
-                    <el-input type="text" v-model="loginForm.name" autoComplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="密码" prop="passwd" class="text-left">
-                    <el-input type="password" v-model="loginForm.passwd" autoComplete="off" @keyup.enter.native="login"></el-input>
-                </el-form-item>
-                <p>
-                    <el-button class="login-btn" type="primary" @click="login">登录</el-button>
-                </p>
-                <a href="javascript:void(0)" @click="showRegist">注册</a>
-            </el-form>
-        </div>
-        <div v-else>
-            <Regist @showLoginPanel="showLogin"></Regist>
-        </div>
+    <div class="login-panel" :class="{open: this.opened}" v-if="!isRegist">
+        <h1>登录</h1>
+        <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
+            <el-form-item label="用户名" prop="name" class="text-left">
+                <el-input type="text" v-model="loginForm.name" autoComplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="passwd" class="text-left">
+                <el-input type="password" v-model="loginForm.passwd" autoComplete="off" @keyup.enter.native="login"></el-input>
+            </el-form-item>
+            <p>
+                <el-button class="login-btn" type="primary" @click="login">登录</el-button>
+            </p>
+            <a href="javascript:void(0)" @click="showRegist">注册</a>
+        </el-form>
     </div>
-
-</div>
+    <div v-else>
+        <Regist @showLoginPanel="showLogin"></Regist>
+    </div>
 </template>
 <script>
 import Regist from './Regist'
@@ -101,10 +95,6 @@ export default {
         },
         "showLogin": function () {
             this.isRegist = false
-        },
-        "closeOverlay": function () {
-            this.$emit('overlayClosed')
-            this.isRegist = false
         }
     },
     "computed": {
@@ -115,35 +105,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.7);
-    text-align: center;
-    display: none;
-    &.open {
-        display: block;
-    }
-    .btn-close {
-        position: absolute;
-        right: 7px;
-        top: 7px;
-    }
-    .overlay-content {
-        position: fixed;
-        left: 50%;
-        top: 10px;
-        width: 440px;
-        overflow: hidden;
-        transform: translate(-50%);
-        border-radius: 6px;
-        background-color: #fff;
-    }
-  }
   .regist-panel {
       width: 100%;
       max-width: 320px;

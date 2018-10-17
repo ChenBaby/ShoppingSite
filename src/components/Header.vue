@@ -42,15 +42,19 @@
                 </ul>
             </div>
         </div>
-        <Login :open="loginShow" @overlayClosed="closeShow"></Login>
+        <Overlay :visibled="loginShow" @overlayClosed="closeShow">
+            <Login :open="true" @overlayClosed="closeShow"></Login>
+        </Overlay>
     </div>
 </template>
 <script>
 import Login from './Login'
+import Overlay from './Overlay'
 export default {
     "name": 'Header',
     "components": {
-        Login
+        Login,
+        Overlay
     },
     "data": function () {
         return {
