@@ -91,11 +91,6 @@ export default {
     },
     "computed": {
         user () {
-            if (localStorage.getItem('user')) {
-                this.$store.commit('user/setUserInfo', JSON.parse(localStorage.getItem('user')))
-            } else {
-                this.$store.commit('user/setUserInfo', null)
-            }
             return this.$store.state.user.userInfo
         },
         isLogged () {

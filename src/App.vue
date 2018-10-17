@@ -6,7 +6,24 @@
 
 <script>
 export default {
-    "name": 'App'
+    "name": 'App',
+    mounted () {
+        this.$store.dispatch('user/getUserInfo')
+            .then(res => {
+                if (res.success) {
+                    console.log('登录状态接口验证成功')
+                    this.$store.commit('user/setUserInfo', res.data)
+                } else {
+                    if (localStorage.getItem('user') !== '{}') { // 本地保存的登录信息告知已失效
+                        this.$message({
+                            "type": 'error',
+                            "message": res.message
+                        })
+                        this.$store.commit('user/setUserInfo', {})
+                    }
+                }
+            })
+    }
 }
 </script>
 
