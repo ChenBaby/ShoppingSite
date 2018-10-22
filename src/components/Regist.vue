@@ -1,5 +1,5 @@
 <template>
-    <div class="regist-panel" :class="{open: this.opened, close: !this.opened}">
+    <div class="regist-panel">
         <h1>注册</h1>
         <el-form ref="registForm" label-width="100px" label-position="top" :model="registForm" class="regist-form">
             <el-form-item label="用户名" prop="name" class="text-left"
@@ -114,62 +114,22 @@ export default {
         "showLogin": function () {
             this.$emit('loginOpened')
         }
-    },
-    "computed": {
-        "opened" () {
-            return this.open
-        }
     }
 }
 </script>
 <style lang="less" scoped>
-  .regist-panel {
-      width: 100%;
-      max-width: 320px;
-      background-color: #fff;
-      padding: 40px 50px;
-      height: 500px;
-        &.open {
-            animation: panelslidein .2s forwards ease-in-out;
-            z-index: 100
+    .regist-panel {
+        padding: 40px;
+        /deep/ .el-form-item__label {
+            padding-bottom: 0;
         }
-        &.close {
-            animation: panelslideout .2s forwards ease-in-out;
-            z-index: 0;
-            display: none;
-        }
-      /deep/ .el-form-item__label {
-          padding-bottom: 0;
-      }
-      /deep/ .el-form-item {
+        /deep/ .el-form-item {
         margin-bottom: 10px;
-      }
+        }
 
-  }
-  .regist-btn {
-      margin-top: 22px;
-      margin-bottom: 22px;
-  }
-  @keyframes panelslidein {
-    0% {
-        opacity: 0;
-        height: 0;
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .regist-btn {
+        margin-top: 22px;
+        margin-bottom: 22px;
     }
-  }
-  @keyframes panelslideout {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        height: 0;
-        transform: translateY(-700%);
-    }
-  }
 </style>

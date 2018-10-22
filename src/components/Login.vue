@@ -1,5 +1,5 @@
 <template>
-    <div class="login-panel" :class="{open: this.opened, close: !this.opened}">
+    <div class="login-panel">
         <h1>登录</h1>
         <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
             <el-form-item label="用户名" prop="name" class="text-left">
@@ -85,60 +85,16 @@ export default {
         "showRegist": function () {
             this.$emit('registOpened')
         }
-    },
-    "computed": {
-        "opened" () {
-            return this.open
-        }
     }
 }
 </script>
 <style lang="less" scoped>
-  .login-panel{
-    height: 380px;
-    width: 100%;
-    max-width: 320px;
-    background-color: #fff;
-    padding: 40px 50px;
-    transform: translateY(-100%);
-    &.open {
-        animation: panelslidein .2s forwards ease-in-out;
-        z-index: 100;
+    .login-panel{
+        padding: 40px;
     }
-    &.close {
-        animation: panelslideout .2s forwards ease-in-out;
-        z-index: 0;
-        display: none;
+    .login-btn {
+        margin-top: 22px;
+        margin-bottom: 22px;
+        display: inline-block;
     }
-
-  }
-  .login-btn {
-      margin-top: 22px;
-      margin-bottom: 22px;
-      display: inline-block;
-  }
-  @keyframes panelslidein {
-    0% {
-        opacity: 0;
-        height: 0;
-    }
-
-    to {
-        opacity: 1;
-        height: 380px;
-        transform: translateY(0);
-    }
-  }
-  @keyframes panelslideout {
-    to {
-        opacity: 0;
-        height: 0;
-    }
-
-    0% {
-        opacity: 1;
-        height: 380px;
-        transform: translateY(0);
-    }
-  }
 </style>
