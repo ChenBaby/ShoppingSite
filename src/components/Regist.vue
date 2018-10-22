@@ -1,5 +1,5 @@
 <template>
-    <div class="regist-panel">
+    <div class="regist-panel" :class="{open: this.opened, close: !this.opened}">
         <h1>注册</h1>
         <el-form ref="registForm" label-width="100px" label-position="top" :model="registForm" class="regist-form">
             <el-form-item label="用户名" prop="name" class="text-left"
@@ -26,6 +26,9 @@
 import {mapActions} from 'vuex'
 export default {
     "name": 'Regist',
+    "props": {
+        "open": Boolean
+    },
     data () {
         return {
             "registForm": {
@@ -109,14 +112,64 @@ export default {
             })
         },
         "showLogin": function () {
-            this.$emit('showLoginPanel')
+            this.$emit('loginOpened')
+        }
+    },
+    "computed": {
+        "opened" () {
+            return this.open
         }
     }
 }
 </script>
 <style lang="less" scoped>
+  .regist-panel {
+      width: 100%;
+      max-width: 320px;
+      background-color: #fff;
+      padding: 40px 50px;
+      height: 500px;
+        &.open {
+            animation: panelslidein .2s forwards ease-in-out;
+            z-index: 100
+        }
+        &.close {
+            animation: panelslideout .2s forwards ease-in-out;
+            z-index: 0;
+            display: none;
+        }
+      /deep/ .el-form-item__label {
+          padding-bottom: 0;
+      }
+      /deep/ .el-form-item {
+        margin-bottom: 10px;
+      }
+
+  }
   .regist-btn {
       margin-top: 22px;
       margin-bottom: 22px;
+  }
+  @keyframes panelslidein {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  @keyframes panelslideout {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        height: 0;
+        transform: translateY(-700%);
+    }
   }
 </style>

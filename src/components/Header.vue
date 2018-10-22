@@ -42,25 +42,29 @@
                 </ul>
             </div>
         </div>
-        <Overlay :visibled="loginShow" @overlayClosed="closeShow">
-            <Login :open="true" @overlayClosed="closeShow"></Login>
+        <Overlay :visibled="loginShow || registShow" @overlayClosed="closeOverlay">
+            <Login :open="loginShow" @registOpened="openRegist"></Login>
+            <Regist :open="registShow" @loginOpened="openLogin"></Regist>
         </Overlay>
     </div>
 </template>
 <script>
 import Login from './Login'
 import Overlay from './Overlay'
+import Regist from './Regist'
 export default {
     "name": 'Header',
     "components": {
         Login,
-        Overlay
+        Overlay,
+        Regist
     },
     "data": function () {
         return {
             "searchInputShow": false,
             "searchtext": '',
-            "loginShow": false
+            "loginShow": false,
+            "registShow": false
         }
     },
     "methods": {
@@ -81,8 +85,17 @@ export default {
         "logIn": function () {
             this.loginShow = !this.loginShow
         },
-        "closeShow": function () {
+        "closeOverlay": function () {
             this.loginShow = false
+            this.registShow = false
+        },
+        "openRegist": function () {
+            this.loginShow = false
+            this.registShow = true
+        },
+        "openLogin": function () {
+            this.loginShow = true
+            this.registShow = false
         }
     },
     "watch": {

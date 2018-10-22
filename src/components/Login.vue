@@ -1,5 +1,5 @@
 <template>
-    <div class="login-panel" :class="{open: this.opened}" v-if="!isRegist">
+    <div class="login-panel" :class="{open: this.opened, close: !this.opened}">
         <h1>登录</h1>
         <el-form status-icon ref="loginForm" label-width="100px" label-position="top" class="login-form" :model="loginForm" :rules="rules">
             <el-form-item label="用户名" prop="name" class="text-left">
@@ -14,19 +14,12 @@
             <a href="javascript:void(0)" @click="showRegist">注册</a>
         </el-form>
     </div>
-    <div v-else>
-        <Regist @showLoginPanel="showLogin"></Regist>
-    </div>
 </template>
 <script>
-import Regist from './Regist'
 export default {
     "name": 'Login',
     "props": {
         "open": Boolean
-    },
-    "components": {
-        Regist
     },
     data () {
         return {
@@ -45,8 +38,7 @@ export default {
                 }, {
                     "validator": this.validatePass, "trigger": 'blur'
                 }]
-            },
-            "isRegist": false
+            }
         }
     },
     "methods": {
@@ -91,10 +83,7 @@ export default {
             })
         },
         "showRegist": function () {
-            this.isRegist = true
-        },
-        "showLogin": function () {
-            this.isRegist = false
+            this.$emit('registOpened')
         }
     },
     "computed": {
@@ -105,18 +94,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .regist-panel {
-      width: 100%;
-      max-width: 320px;
-      background-color: #fff;
-      padding: 40px 50px;
-      /deep/ .el-form-item__label {
-          padding-bottom: 0;
-      }
-      /deep/ .el-form-item {
-        margin-bottom: 10px;
-      }
-  }
   .login-panel{
     height: 380px;
     width: 100%;
@@ -126,6 +103,12 @@ export default {
     transform: translateY(-100%);
     &.open {
         animation: panelslidein .2s forwards ease-in-out;
+        z-index: 100;
+    }
+    &.close {
+        animation: panelslideout .2s forwards ease-in-out;
+        z-index: 0;
+        display: none;
     }
 
   }
@@ -136,12 +119,26 @@ export default {
   }
   @keyframes panelslidein {
     0% {
-        opacity: 0
+        opacity: 0;
+        height: 0;
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        height: 380px;
+        transform: translateY(0);
+    }
+  }
+  @keyframes panelslideout {
+    to {
+        opacity: 0;
+        height: 0;
+    }
+
+    0% {
+        opacity: 1;
+        height: 380px;
+        transform: translateY(0);
     }
   }
 </style>
