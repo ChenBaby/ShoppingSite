@@ -57,10 +57,16 @@
                             <div class="panel panel-light"><span>J</span></div>
                         </div>
                     </div>
-                    <div class="panels panels-bottom">
-                        <div class="panel panel-light"><span>Q</span></div>
-                        <div class="panel"><span>K</span></div>
-                        <div class="panel panel-light"><span>A</span></div>
+                    <div class="panels-bottom">
+                        <div class="cls-panel">
+                            <img src="~@/assets/images/luckyPoker/icon-cls.png" alt="icon-cls">
+                            <label>清除</label>
+                        </div>
+                        <div class="panels panels-main">
+                            <div class="panel panel-light"><span>Q</span></div>
+                            <div class="panel"><span>K</span></div>
+                            <div class="panel panel-light"><span>A</span></div>
+                        </div>
                     </div>
                 </div>
                 <div class="corn-panel">
@@ -136,15 +142,19 @@ export default {
             switch (obj) {
             case 'purple':
                 this.purple.actived = true
+                this.cornValue = 0.00001
                 break
             case 'orange':
                 this.orange.actived = true
+                this.cornValue = 0.001
                 break
             case 'blue':
                 this.blue.actived = true
+                this.cornValue = 0.01
                 break
             case 'yellow':
                 this.yellow.actived = true
+                this.cornValue = 0.1
                 break
             }
         }
@@ -330,6 +340,34 @@ export default {
                 }
             }
             .panels-bottom {
+                position: relative;
+            }
+            .cls-panel {
+                width: 50px;
+                height: 50px;
+                background: rgba(12,109,109,1);
+                border-radius: 8px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width:19px;
+                    height:23px;
+                }
+                label {
+                    width:32px;
+                    height:16px;
+                    font-size:16px;
+                    font-family:PingFang-SC-Regular;
+                    font-weight:400;
+                    color:rgba(130,215,215,1);
+                }
+            }
+            .panels-main {
                 width: 60%;
                 margin: 0 auto;
                 display: table;
