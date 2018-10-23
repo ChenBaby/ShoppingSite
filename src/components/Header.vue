@@ -1,12 +1,12 @@
 <template>
     <div class="shopify-section-header">
         <div class="grid_logo">
-            <img src="../assets/images/logo.png" alt="logo" width="30" class="logo">
+            <router-link :to="{path: '/'}"><img src="../assets/images/logo.png" alt="logo" width="30" class="logo"></router-link>
         </div>
         <div class="grid_lists text-left">
             <nav>
                 <ul>
-                    <li><router-link :to="{path: '/lifegoods'}">生活用品</router-link></li>
+                    <li><router-link :to="{path: '/luckypoker'}">扑克</router-link></li>
                     <li><router-link :to="{path: '/lifegoods'}">汽车用品</router-link></li>
                     <li><router-link :to="{path: '/lifegoods'}">电子产品</router-link></li>
                     <li><router-link :to="{path: '/lifegoods'}">男士凉鞋</router-link></li>
