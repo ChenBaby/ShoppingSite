@@ -131,3 +131,13 @@ a {
 .text-right {
     text-align: right;
 }
+.clearfix {
+    &:after {
+        content: '';
+        display: table;
+        height: 0;
+        line-height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+}

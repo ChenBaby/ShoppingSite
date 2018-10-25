@@ -252,4 +252,12 @@ export default {
         }
     }
 }
+@media (max-width: 1106px) {
+    .shopify-section-header {
+        padding: 0 15px;
+        .grid_lists {
+            display: none;
+        }
+    }
+}
 </style>

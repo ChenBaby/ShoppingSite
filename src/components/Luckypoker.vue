@@ -4,105 +4,96 @@
         <div class="luckypoker">
             <!-- <div class="bg-border"></div> -->
             <div class="bg-content">
-                <div class="letter-panel">
-                    <div class="left panels">
-                        <div class="letter-red panel">
-                            <img src="~@/assets/images/luckyPoker/icon-hongt.png" alt="letter-hongt" class="letter-hongt">
-                            <span>RED</span>
-                            <img src="~@/assets/images/luckyPoker/icon-fk.png" alt="letter-fk" class="letter-fk">
+                <div class="area-betting">
+                    <div class="letter-panel">
+                        <div class="left panels">
+                            <div class="letter-red panel">
+                                <i><img src="~@/assets/images/luckyPoker/icon-hongt.png" alt="letter-hongt" class="letter-hongt"></i>
+                                <P>RED</P>
+                                <i><img src="~@/assets/images/luckyPoker/icon-fk.png" alt="letter-fk" class="letter-fk"></i>
+                            </div>
+                            <div class="letter-black panel panel-light">
+                                <i><img src="~@/assets/images/luckyPoker/icon-heit.png" alt="letter-heit" class="letter-heit"></i>
+                                <P>BLACK</P>
+                                <i><img src="~@/assets/images/luckyPoker/icon-mh.png" alt="letter-mh" class="letter-mh"></i>
+                            </div>
                         </div>
-                        <div class="letter-black panel panel-light">
-                            <img src="~@/assets/images/luckyPoker/icon-heit.png" alt="letter-heit" class="letter-heit">
-                            <span>BLACK</span>
-                            <img src="~@/assets/images/luckyPoker/icon-mh.png" alt="letter-mh" class="letter-mh">
-                        </div>
-                    </div>
-                    <div class="right">
-                        <span class="letter-golden">
-                            JOKER
+                        <div class="right">
+                            <P class="letter-golden">
+                                JOKER
+                            </P>
                             <img src="~@/assets/images/luckyPoker/icon-crown.png" alt="letter-crown" class="letter-crown">
-                        </span>
+                        </div>
+                    </div>
+                    <div class="pattern-panel">
+                        <div class="panels">
+                            <div class="panel panel-light">
+                                <img src="~@/assets/images/luckyPoker/icon-heit.png" alt="pattern-heit" class="pattern-heit">
+                            </div>
+                            <div class="panel">
+                                <img src="~@/assets/images/luckyPoker/icon-hongt.png" alt="pattern-hongt" class="pattern-hongt">
+                            </div>
+                            <div class="panel panel-light">
+                                <img src="~@/assets/images/luckyPoker/icon-mh.png" alt="pattern-mh" class="pattern-mh">
+                            </div>
+                            <div class="panel">
+                                <img src="~@/assets/images/luckyPoker/icon-fk.png" alt="pattern-fk" class="pattern-fk">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="number-panel">
+                        <div class="panels panels-top">
+                            <div class="row">
+                                <div class="panel"><span>2</span></div>
+                                <div class="panel panel-light"><span>3</span></div>
+                                <div class="panel"><span>4</span></div>
+                                <div class="panel panel-light"><span>5</span></div>
+                                <div class="panel"><span>6</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-light"><span>7</span></div>
+                                <div class="panel"><span>8</span></div>
+                                <div class="panel panel-light"><span>9</span></div>
+                                <div class="panel"><span>10</span></div>
+                                <div class="panel panel-light"><span>J</span></div>
+                            </div>
+                        </div>
+                        <div class="panels-bottom">
+                            <div class="cls-panel">
+                                <a href="javascript:void(0)">Delete</a>
+                            </div>
+                            <div class="panels panels-main">
+                                <div class="panel panel-light"><span>Q</span></div>
+                                <div class="panel"><span>K</span></div>
+                                <div class="panel panel-light"><span>A</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="pattern-panel">
-                    <div class="panels">
-                        <div class="panel panel-light">
-                            <img src="~@/assets/images/luckyPoker/icon-heit.png" alt="pattern-heit" class="pattern-heit">
-                        </div>
-                        <div class="panel">
-                            <img src="~@/assets/images/luckyPoker/icon-hongt.png" alt="pattern-hongt" class="pattern-hongt">
-                        </div>
-                        <div class="panel panel-light">
-                            <img src="~@/assets/images/luckyPoker/icon-mh.png" alt="pattern-mh" class="pattern-mh">
-                        </div>
-                        <div class="panel">
-                            <img src="~@/assets/images/luckyPoker/icon-fk.png" alt="pattern-fk" class="pattern-fk">
-                        </div>
-                    </div>
-                </div>
-                <div class="number-panel">
-                    <div class="panels panels-top">
-                        <div class="row">
-                            <div class="panel"><span>2</span></div>
-                            <div class="panel panel-light"><span>3</span></div>
-                            <div class="panel"><span>4</span></div>
-                            <div class="panel panel-light"><span>5</span></div>
-                            <div class="panel"><span>6</span></div>
-                        </div>
-                        <div class="row">
-                            <div class="panel panel-light"><span>7</span></div>
-                            <div class="panel"><span>8</span></div>
-                            <div class="panel panel-light"><span>9</span></div>
-                            <div class="panel"><span>10</span></div>
-                            <div class="panel panel-light"><span>J</span></div>
-                        </div>
-                    </div>
-                    <div class="panels-bottom">
-                        <div class="cls-panel">
-                            <img src="~@/assets/images/luckyPoker/icon-cls.png" alt="icon-cls">
-                            <label>清除</label>
-                        </div>
-                        <div class="panels panels-main">
-                            <div class="panel panel-light"><span>Q</span></div>
-                            <div class="panel"><span>K</span></div>
-                            <div class="panel panel-light"><span>A</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="corn-panel">
-                    <ul class="rows">
-                        <li class="corn corn-purple">
-                            <a :class="{actived: purple.actived}" @click="active('purple')">
+                <div class="area-btn clearfix">
+                    <div class="corn-panel">
+                        <ul class="rows">
+                            <li class="corn corn-purple" :class="{actived: purple.actived}" @click="active('purple')">
                                 <img src="~@/assets/images/luckyPoker/coin-0.0001.png" alt="coin-0.0001">
-                                <span><label>0.00001</label></span>
-                            </a>
-                        </li>
-                        <li class="corn corn-orange">
-                            <a :class="{actived: orange.actived}" @click="active('orange')">
+                                <p>0.00001</p>
+                            </li>
+                            <li class="corn corn-orange" :class="{actived: orange.actived}" @click="active('orange')">
                                 <img src="~@/assets/images/luckyPoker/coin-0.001.png" alt="coin-0.001">
-                                <span><label>0.001</label></span>
-                            </a>
-                        </li>
-                        <li class="corn corn-blue">
-                            <a :class="{actived: blue.actived}" @click="active('blue')">
+                                <p>0.001</p>
+                            </li>
+                            <li class="corn corn-blue" :class="{actived: blue.actived}" @click="active('blue')">
                                 <img src="~@/assets/images/luckyPoker/coin-0.01.png" alt="coin-0.01">
-                                <span><label>0.01</label></span>
-                            </a>
-                        </li>
-                        <li class="corn corn-yellow">
-                            <a :class="{actived: yellow.actived}" @click="active('yellow')">
+                                <p>0.01</p>
+                            </li>
+                            <li class="corn corn-yellow" :class="{actived: yellow.actived}" @click="active('yellow')">
                                 <img src="~@/assets/images/luckyPoker/coin-0.1.png" alt="coin-0.1">
-                                <span><label>0.1</label></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="button-panel">
-                    <div>
-                        <a href="javascript:void(0)">
-                            <label class="btn-label">PAY</label>
-                            <label class="value">{{this.cornValue}}&nbsp;ETH</label>
-                        </a>
+                                <p>0.1</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="button-panel">
+                        <p class="btn-label">PAY</p>
+                        <span class="value">{{this.cornValue}}&nbsp;ETH</span>
                     </div>
                 </div>
             </div>
@@ -120,7 +111,7 @@ export default {
         return {
             "cornValue": 0.0001,
             "purple": {
-                "actived": false
+                "actived": true
             },
             "orange": {
                 "actived": false
@@ -183,49 +174,58 @@ export default {
     }
 }
 .luckypoker {
-    width: 550px;
+    width: 100%;
     margin: 0 auto;
-    border-radius:150px;
+    * {
+        box-sizing: border-box;
+    }
     .bg-content {
-        width: 100%;
-        height: 864px;
-        background-image: url('~@/assets/images/luckyPoker/bg-pc-desktop.png');
-        // background-size: cover;
-        background-position: bottom center;
-        > div {
-            padding-left: 55px;
-            padding-right: 53px;
-            .panels {
-                width:442px;
-                height:83px;
-                border:2px solid rgba(111,174,174,1);
-                border-radius:8px;
-                overflow: hidden;
-                .panel {
-                    background:rgba(56,99,99,1);
-                    border-right: solid 2px RGBA(111, 174, 174, 1);
-                    &:nth-last-child(1) {
-                        border-right: none;
-                    }
+        box-sizing: border-box;
+        .area-betting {
+            z-index: 2;
+            position: relative;
+        }
+        .panels {
+            height:83px;
+            border:2px solid rgba(111,174,174,1);
+            border-radius:8px;
+            overflow: hidden;
+            .panel {
+                background:rgba(56,99,99,1);
+                border-right: solid 2px RGBA(111, 174, 174, 1);
+                &:nth-last-child(1) {
+                    border-right: none;
                 }
-                .panel-light {
-                    background:rgba(74,130,130,1);
-                }
+            }
+            .panel-light {
+                background:rgba(74,130,130,1);
             }
         }
         .letter-panel {
             overflow: hidden;
-            padding-top: 51px;
             &::before {
                 clear: both;
             }
-            img {
-                width: 15px;
-                height: 15px;
+            .panel {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                i {
+                    display: block;
+                    position: relative;
+                    width: 8.29493088%;
+                    img {
+                        width: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
             }
             .left {
-                width:285px;
-                height:83px;
+                height: 83px;
                 background:rgba(56,99,99,1);
                 border:2px solid rgba(111,174,174,1);
                 border-radius:8px;
@@ -233,70 +233,51 @@ export default {
                 display: flex;
                 align-items: center;
                 > div {
-                        width: 50%;
-                        height: 83px;
-                        line-height: 83px;
+                    width: 50%;
+                    height: 83px;
+                    line-height: 83px;
                 }
-                .letter-red span {
-                    width:55px;
-                    height:18px;
+                .letter-red {
                     font-size:24px;
                     font-family:LucidaBright-Demi;
                     font-weight:600;
                     color:rgba(254,59,59,1);
+                    P {
+                        margin: 0 7.5px;
+                    }
                 }
                 .letter-black {
-                    border-top-right-radius: 8px;
-                    border-bottom-right-radius: 8px;
-                    border-right: none;
-                    span {
-                        width:93px;
-                        height:18px;
-                        font-size:24px;
-                        font-family:LucidaBright-Demi;
-                        font-weight:600;
-                        color:rgba(0,0,0,1);
-                    }
+                    font-size:24px;
+                    font-family:LucidaBright-Demi;
+                    font-weight:600;
+                    color:rgba(0,0,0,1);
                     background:rgba(74,130,130,1);
-                }
-                .letter-hongt {
-                    margin-right: 10px;
-                }
-                .letter-fk {
-                    margin-left: 12px;
-                }
-                .letter-heit {
-                    width:13px;
-                    height:16px;
-                    margin-right: 5px;
-                }
-                .letter-mh {
-                    width:15px;
-                    height:16px;
+                    P {
+                        margin: 0 7.5px;
+                    }
                 }
             }
             .right {
-                width:140px;
-                height:83px;
                 background:rgba(56,99,99,1);
                 border:2px solid rgba(111,174,174,1);
                 border-radius:8px;
                 float: right;
+                height: 83px;
                 line-height: 83px;
+                position: relative;
                 .letter-golden {
-                    width:88px;
-                    height:21px;
                     font-size:24px;
                     font-family:LucidaBright-Demi;
                     font-weight:600;
                     color:rgba(255,211,8,1);
-                    position: relative;
                 }
                 .letter-crown {
-                    width:21px;
-                    height:18px;
+                    display: block;
                     position: absolute;
-                    top: -9px;
+                    right: 9.00900901%;
+                    top: 21.42857143%;
+                    width: 13.51351351%;
+                    max-width: 36px;
                 }
             }
         }
@@ -344,27 +325,25 @@ export default {
             }
             .cls-panel {
                 width: 50px;
-                height: 50px;
                 background: rgba(12,109,109,1);
                 border-radius: 8px;
                 position: absolute;
                 left: 0;
                 bottom: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                img {
-                    width:19px;
-                    height:23px;
+                a {
+                    display: block;
+                    height: 100%;
+                    color: #99cccc;
                 }
-                label {
-                    width:32px;
-                    height:16px;
-                    font-size:16px;
-                    font-family:PingFang-SC-Regular;
-                    font-weight:400;
-                    color:rgba(130,215,215,1);
+                a::before {
+                    content: "";
+                    display: block;
+                    background: url('~@/assets/images/luckyPoker/icon-cls.png') no-repeat center;
+                    margin: 4px auto 0;
+                    width: 19px;
+                    height: 23px;
+                    padding-top: 0;
+                    background-size: 100%;
                 }
             }
             .panels-main {
@@ -375,117 +354,281 @@ export default {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
                 overflow: hidden;
-                position: relative;
-                left: 2px;
             }
         }
+        .area-btn {
+            position: relative;
+            margin: 22.5px auto 0;
+            z-index: 2;
+        }
         .corn-panel {
-            padding-top: 34px;
+            ul {
+                display: flex;
+            }
             .corn {
-                width: 66px;
-                height: 66px;
-                display: inline-block;
-                margin-right: 25px;
                 position: relative;
-                a {
-                    width: 80px;
-                    height: 80px;
-                    display: inline-block;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    &.actived {
-                        background-image: url('~@/assets/images/luckyPoker/bg-ligth.png');
-                        background-size: cover;
-                        background-position: center;
-                    }
-                }
                 img {
-                    width: 66px;
-                    height: 66px;
-                    position: relative;
-                    top: 7px;
+                    display: block;
+                    width: 80%;
+                    margin: 0 auto;
+                    -webkit-transition: all 0.2s;
+                    transition: all 0.2s;
+                    border-radius: 50%;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
                 }
-                span {
-                    width: 82px;
-                    height: 25px;
-                    background: rgba(0,0,0,1);
-                    opacity: 0.8;
-                    border-radius: 13px;
+                p {
                     position: absolute;
-                    bottom: 10px;
-                    left: -2px;
-                    label {
-                        width:73px;
-                        height:16px;
-                        font-size:20px;
-                        font-family:PingFang-SC-Bold;
-                        font-weight:bold;
-                        color:rgba(255,211,8,1);
-                        cursor: pointer;
+                    left: 50%;
+                    -webkit-transform: translate(-50%);
+                    transform: translate(-50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    padding: 0 5px;
+                    overflow: hidden;
+                    color: #fff;
+                    font-weight: bold;
+                }
+                &.actived {
+                    p {
+                        color: #ffcc00;
                     }
+                    img {
+                        -webkit-transform: scale(1.3) !important;
+                        transform: scale(1.3) !important;
+                        -webkit-box-shadow: none;
+                        box-shadow: none;
+                    }
+                }
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    padding-top: 100%;
+                    left: 50%;
+                    top: 50%;
+                    -webkit-transform: translate(-50%, -50%) scale(0.8);
+                    transform: translate(-50%, -50%) scale(0.8);
+                    border-radius: 50%;
+                    -webkit-box-shadow: 0 0 30px transparent;
+                    box-shadow: 0 0 30px transparent;
+                    -webkit-transition: all 0.2s;
+                    transition: all 0.2s;
                 }
             }
         }
         .button-panel {
-            padding-top: 21px;
-            > div {
-                display: inline-block;
-                height: 78px;
-                background-image: url('~@/assets/images/luckyPoker/btn-bg.jpg');
-                background-size: cover;
-                background-position: center;
-                border-radius: 8px;
+            position: relative;
+            background: url('~@/assets/images/luckyPoker/btn-main.png') no-repeat center;
+            background-size: cover;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            .btn-label {
+                font-size: 27px;
+                font-family: PingFang-SC-Bold;
+                font-weight: bold;
+                color: rgba(254,254,254,1);
+                display: block;
+                -webkit-text-stroke: 2px RGBA(32, 66, 65, 0.64);
+                text-stroke:2px RGBA(32, 66, 65, 0.64);
+                cursor: pointer;
             }
-            a {
-                display: inline-block;
-                width:210px;
-                height:70px;
+            .value {
+                font-size: 18px;
+                font-family: PingFang-SC-Bold;
+                font-weight: bold;
+                color: rgba(254,254,254,1);
+                display: block;
+                cursor: pointer;
+            }
+        }
+    }
+}
+@media (min-width: 1106px) {
+    .luckypoker {
+        width: 612px;
+        margin: 0 auto;
+        .bg-content {
+            width: 100%;
+            height: 864px;
+            background: url('~@/assets/images/luckyPoker/bg-pc-desktop.png') no-repeat center top;
+            background-size: 612px;
+            padding: 51px 85px 0;
+            box-sizing: border-box;
+            .letter-panel {
+                .left {
+                    width:285px;
+                }
+                .right {
+                    width:140px;
+                }
+            }
+            .corn-panel {
+                ul {
+                    justify-content: center;
+                    li.corn {
+                        width: 58px;
+                        margin: 0 14px;
+                        &.actived {
+                            &::before {
+                                -webkit-transform: translate(-50%, -50%) scale(1);
+                                transform: translate(-50%, -50%) scale(1);
+                                -webkit-box-shadow: 0 0 30px #00ffea;
+                                box-shadow: 0 0 30px #00ffea;
+                            }
+                        }
+                        p {
+                            bottom: 0;
+                            min-width: 65px;
+                            height: 24px;
+                            border-radius: 12px;
+                            line-height: 24px;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            .button-panel {
+                width: 210px;
+                height: 63px;
+                margin: 28px auto 0;
                 border-radius: 8px;
-                background-image: url('~@/assets/images/luckyPoker/btn-main.png');
-                background-size: cover;
-                background-position: center;
-                position: relative;
+                -webkit-box-shadow: 0 7px 0 #2b7876;
+                box-shadow: 0 7px 0 #2b7876;
+            }
+        }
+    }
+}
+@media (max-width: 1106px) {
+    .luckypoker {
+        background: url('~@/assets/images/luckyPoker/bg.jpg') repeat-y center bottom;
+        background-size: cover;
+        .bg-content {
+            width: 100%;
+            background: url('~@/assets/images/luckyPoker/bg-ligth.png') no-repeat center;
+            background-size: cover;
+            padding: 30px 15px 30px;
+            box-sizing: border-box;
+            position: relative;
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 200px;
+                background: url('~@/assets/images/luckyPoker/bg-border.png') no-repeat center bottom;
+                background-size: 100%;
+            }
+            .panels {
+                border:1px solid rgba(111,174,174,1);
+                .panel {
+                    border-right: solid 1px RGBA(111, 174, 174, 1);
+                    &:nth-last-child(1) {
+                        border-right: none;
+                    }
+                }
+            }
+            .letter-panel {
+                .left {
+                    width: 65.2173913%;
+                    height: 70px;
+                    border:1px solid rgba(111,174,174,1);
+                    border-radius: 6px;
+                    > div {
+                        height: 70px;
+                        line-height: 70px;
+                    }
+                    .letter-red, .letter-black {
+                        font-size: 19px;
+                    }
+                }
+                .right {
+                    width: 32.17391304%;
+                    height: 70px;
+                    line-height: 70px;
+                    border:1px solid rgba(111,174,174,1);
+                    border-radius: 6px;
+                    .letter-golden {
+                        font-size: 19px;
+                    }
+                }
+            }
+            .pattern-panel .panels{
+                height: 70px;
+            }
+            .number-panel {
+                .panels .panel {
+                    height: 61.5px;
+                    line-height: 61.5px;
+                    font-size: 23px;
+                }
+                .cls-panel {
+                    width: 45px;
+                    border-radius: 6px;
+                    font-size: 12px;
+                }
+            }
+            .area-btn {
+                margin: 22.5px -15px 0;
+            }
+            .corn-panel {
+                float: left;
+                width: 71.01449275%;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 10px;
+                ul {
+                    justify-content: space-between;
+                    width: 100%;
+                }
+                .corn {
+                    width: 20.67594433%;
+                    &.actived {
+                        &::before {
+                            -webkit-transform: translate(-50%, -50%) scale(1);
+                            transform: translate(-50%, -50%) scale(1);
+                            -webkit-box-shadow: 0 0 10px #00ffea;
+                            box-shadow: 0 0 10px #00ffea;
+                        }
+                    }
+                }
+                p {
+                    bottom: 0;
+                    min-width: 105.76923077%;
+                    height: 19px;
+                    border-radius: 9.5px;
+                    line-height: 19px;
+                    font-size: 12px;
+                }
+            }
+            .button-panel {
+                position: absolute;
+                top: 0;
+                right: 5px;
+                width: 27.10144928%;
+                height: 100%;
+                border-radius: 6px;
+                -webkit-box-shadow: 0 4px 0 #2b7876;
+                box-shadow: 0 4px 0 #2b7876;
                 .btn-label {
-                    width: 53px;
-                    height: 20px;
-                    font-size: 27px;
-                    font-family: PingFang-SC-Bold;
-                    font-weight: bold;
-                    color: rgba(254,254,254,1);
-                    display: block;
-                    margin: 0 auto;
-                    position: absolute;
-                    top: 8px;
-                    left: 50%;
-                    transform: translate(-50%);
-                    -webkit-text-stroke: 2px RGBA(32, 66, 65, 0.64);
-                    text-stroke:2px RGBA(32, 66, 65, 0.64);
-                    cursor: pointer;
+                    line-height: 22px;
+                    font-size: 14px;
+                    text-shadow: 0 1px #2b7b75, 1px 0 #2b7b75, -1px 0 #2b7b75, 0 -1px #2b7b75;
                 }
                 .value {
-                    width: 111px;
-                    height: 15px;
-                    font-size: 18px;
-                    font-family: PingFang-SC-Bold;
-                    font-weight: bold;
-                    color: rgba(254,254,254,1);
-                    display: block;
-                    position: absolute;
-                    bottom: 18px;
-                    margin: 0 auto;
-                    left: 50%;
-                    transform: translate(-50%);
-                    cursor: pointer;
+                    line-height: 15px;
+                    font-size: 12px;
                 }
             }
         }
     }
-    .bg-border {
-        width: 100%;
-        height: 178px;
-        background-image: url('~@/assets/images/luckyPoker/bg-border.png');
-        background-size: cover;
-        background-position: center;
-    }
 }
+
 </style>
