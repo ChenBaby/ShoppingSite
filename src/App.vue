@@ -23,6 +23,30 @@ export default {
                     }
                 }
             })
+        this.checkCookie()
+    },
+    "methods": {
+        getCookie (name) {
+            var cname = `${name}=`
+            var cookies = document.cookie.split(';')
+            var value = ''
+            cookies.forEach(c => {
+                var cookie = c.trim()
+                if (cookie.indexOf(cname) === 0) {
+                    value = c.substring(cname.length, c.length)
+                }
+            })
+            return value
+        },
+        checkCookie () {
+            if (document.cookie) {
+                var name = this.getCookie('username')
+                this.$message({
+                    "type": 'success',
+                    "message": `欢迎您${name}`
+                })
+            }
+        }
     }
 }
 </script>

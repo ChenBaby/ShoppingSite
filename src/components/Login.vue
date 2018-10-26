@@ -49,7 +49,7 @@ export default {
                 callback()
             }
         },
-        "login": function () {
+        "login" () {
             this.$refs['loginForm'].validate((valid) => {
                 if (valid) {
                     this.$store.dispatch('user/signIn', {
@@ -62,8 +62,9 @@ export default {
                                 localStorage.setItem('CK', res.data.ck)
                                 this.$store.dispatch('user/getUserInfo').then(res => {
                                     this.$store.commit('user/setUserInfo', res.data)
+                                    this.setCookie('username', res.data.username, 1)
                                 })
-                                this.$emit('overlayClosed')
+                                this.$emit('overlayclosed')
                                 this.$router.push('/')
                             } else {
                                 this.$message.error(res.message)
@@ -82,8 +83,14 @@ export default {
                 }
             })
         },
-        "showRegist": function () {
+        "showRegist" () {
             this.$emit('registOpened')
+        },
+        setCookie (cookiename, cookievalue, expireddays) {
+            var d = new Date()
+            d.setTime(d.getTime() + (expireddays * 24 * 60 * 60 * 1000))
+            var expires = `expires=${d.toGMTString()}`
+            document.cookie = cookiename + '=' + cookievalue + ';' + expires
         }
     }
 }

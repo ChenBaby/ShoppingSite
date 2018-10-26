@@ -455,7 +455,7 @@ export default {
         .bg-content {
             width: 100%;
             height: 864px;
-            background: url('~@/assets/images/luckyPoker/bg-pc-desktop.png') no-repeat center top;
+            background: url('~@/assets/images/luckyPoker/bg-pc-desktop2.png') no-repeat center top;
             background-size: 612px;
             padding: 51px 85px 0;
             box-sizing: border-box;

@@ -42,10 +42,10 @@
                 </ul>
             </div>
         </div>
-        <Overlay :visibled="loginShow" @overlayClosed="closeOverlay">
-            <Login @registOpened="openRegist"></Login>
+        <Overlay :visibled="loginShow" @overlayclosed="closeOverlay">
+            <Login @registOpened="openRegist" @overlayclosed="closeOverlay"></Login>
         </Overlay>
-        <Overlay :visibled="registShow" @overlayClosed="closeOverlay">
+        <Overlay :visibled="registShow" @overlayclosed="closeOverlay">
             <Regist @loginOpened="openLogin"></Regist>
         </Overlay>
     </div>

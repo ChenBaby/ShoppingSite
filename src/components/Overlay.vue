@@ -14,7 +14,7 @@ export default {
     },
     "methods": {
         close () {
-            this.$emit('overlayClosed')
+            this.$emit('overlayclosed')
         }
     },
     "watch": {
