@@ -90,7 +90,7 @@ export default {
             var d = new Date()
             d.setTime(d.getTime() + (expireddays * 24 * 60 * 60 * 1000))
             var expires = `expires=${d.toGMTString()}`
-            document.cookie = cookiename + '=' + cookievalue + ';' + expires
+            document.cookie = encodeURIComponent(cookiename) + '=' + encodeURIComponent(cookievalue) + ';' + expires
         }
     }
 }

@@ -27,7 +27,7 @@ export default {
     },
     "methods": {
         getCookie (name) {
-            var cname = `${name}=`
+            var cname = `${encodeURIComponent(name)}=`
             var cookies = document.cookie.split(';')
             var value = ''
             cookies.forEach(c => {
@@ -40,7 +40,7 @@ export default {
         },
         checkCookie () {
             if (document.cookie) {
-                var name = this.getCookie('username')
+                var name = decodeURIComponent(this.getCookie('username'))
                 this.$message({
                     "type": 'success',
                     "message": `欢迎您${name}`
